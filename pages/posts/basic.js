@@ -2,18 +2,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
 
 export default function Basic() {
-    const [accuracy, setAccuracy] = useState('');
+    const [model, setModel] = useState({
+        accuracy: 1.0,
+    });
 
-    function handleAccuracyChange(e) {
-        setAccuracy(e.target.value);
-    }
+
 
     if (typeof window !== "undefined") {
-        window.changeAccuracy = (value) => {
-            setAccuracy(value);
+        window.setAccuracy = (value) => {
+            setModel({accuracy:value});
         }
     }
-    console.info("Current value: " + accuracy)
+    // console.info("Current value: " + accuracy)
+    // header
+    // content
+    // footer
 
     return (
         <>
@@ -30,7 +33,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <h1 className="value-multiplier">
-                                {accuracy}
+                                {model.accuracy*100}
                                 <small className="text-muted fw-light">%</small>
                             </h1>
                             <h5 className="value-heading">Accuracy</h5>
@@ -43,7 +46,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <div className="card text-white bg-dark ">
-                                <div className="card-header"><h1>   {accuracy}<small className="fw-light">%</small></h1>
+                                <div className="card-header"><h1>   {model.accuracy}<small className="fw-light">%</small></h1>
                                     <div className="card-body">
                                         <h5 className="card-title">Dark card title</h5>
                                         <p className="card-text">Some quick example text to build on the card title and
@@ -58,7 +61,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <div className="card border-light">
-                                <div className="card-header"><h1>   {accuracy}<small className="fw-light">%</small></h1>
+                                <div className="card-header"><h1>   {model.accuracy}<small className="fw-light">%</small></h1>
                                     <div className="card-body">
                                         <h5 className="card-title">Title</h5>
                                         <p className="card-text">Some quick example text to build on the card title and
