@@ -1,20 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
 
-export default function basic() {
+export default function Basic() {
     const [accuracy, setAccuracy] = useState('');
 
     function handleAccuracyChange(e) {
         setAccuracy(e.target.value);
     }
 
+    if (typeof window !== "undefined") {
+        window.changeAccuracy = (value) => {
+            setAccuracy(value);
+        }
+    }
+    console.info("Current value: " + accuracy)
+
     return (
         <>
-            <div className="text-center">
-                <input value={accuracy}
-                       onChange={handleAccuracyChange}/>
-            </div>
-
             <div className="container">
                 <header>
                     <div className="text-center">
