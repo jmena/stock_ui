@@ -9,7 +9,7 @@ export default function Basic() {
 
 
     if (typeof window !== "undefined") {
-        window.setAccuracy = (value) => {
+        window["model"] = (value) => {
             setModel({accuracy:value});
         }
     }
