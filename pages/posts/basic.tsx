@@ -1,22 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
+import AccuracyWidget from "components/AccuracyWidget";
 
 export default function Basic() {
-    const [model, setModel] = useState({
-        accuracy: 1.0,
-    });
+//Model? extract accuracy
+
+    const [accuracy, setAccuracy] = useState(1.0);
 
 
 
-    if (typeof window !== "undefined") {
-        window["model"] = (value) => {
-            setModel({accuracy:value});
-        }
+    // if (typeof window !== "undefined") {
+    //     window["model"] = (value) => {
+    //         setAccuracy({accuracy:value});
+    //     }
+    // }
+
+
+
+    function clicked() {
+        setAccuracy(Math.random());
     }
-    // console.info("Current value: " + accuracy)
-    // header
-    // content
-    // footer
+
+    function clicked2() {
+        fetch('/static/accuracy.json')
+            .then((received) => received.json())
+            .then((data)=>data["accuracy"] as number)
+            .then((receivedAccuracy)=> setAccuracy(receivedAccuracy))
+    }
 
     return (
         <>
@@ -33,7 +43,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <h1 className="value-multiplier">
-                                {model.accuracy*100}
+                                {AccuracyWidget(accuracy)}
                                 <small className="text-muted fw-light">%</small>
                             </h1>
                             <h5 className="value-heading">Accuracy</h5>
@@ -46,7 +56,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <div className="card text-white bg-dark ">
-                                <div className="card-header"><h1>   {model.accuracy}<small className="fw-light">%</small></h1>
+                                <div className="card-header"><h1>   {accuracy}<small className="fw-light">%</small></h1>
                                     <div className="card-body">
                                         <h5 className="card-title">Dark card title</h5>
                                         <p className="card-text">Some quick example text to build on the card title and
@@ -61,7 +71,7 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <div className="card border-light">
-                                <div className="card-header"><h1>   {model.accuracy}<small className="fw-light">%</small></h1>
+                                <div className="card-header"><h1>   {accuracy}<small className="fw-light">%</small></h1>
                                     <div className="card-body">
                                         <h5 className="card-title">Title</h5>
                                         <p className="card-text">Some quick example text to build on the card title and
@@ -70,6 +80,18 @@ export default function Basic() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="row text-center">
+                        <div className="col">
+                            <button onClick={clicked}>random</button>
+                        </div>
+                    </div>
+
+                    <div className="row text-center">
+                        <div className="col">
+                            <button onClick={clicked2}>sevenfive</button>
                         </div>
                     </div>
 
