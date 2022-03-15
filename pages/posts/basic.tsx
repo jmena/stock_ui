@@ -27,6 +27,12 @@ export default function Basic() {
             .then((data)=>data["accuracy"] as number)
             .then((receivedAccuracy)=> setAccuracy(receivedAccuracy))
     }
+    function clicked3() {
+        fetch(' https://u17juufpz6.execute-api.us-east-1.amazonaws.com/Prod/hello/')
+            .then((received) => received.json())
+            .then((data) => data["accuracy"] as number)
+            .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
+    }
 
     return (
         <>
@@ -92,6 +98,12 @@ export default function Basic() {
                     <div className="row text-center">
                         <div className="col">
                             <button onClick={clicked2}>sevenfive</button>
+                        </div>
+                    </div>
+
+                    <div className="row text-center">
+                        <div className="col">
+                            <button onClick={clicked3}>awsRand</button>
                         </div>
                     </div>
 
