@@ -14,10 +14,6 @@ export default function Basic(staticProps) {
     //     }
     // }
 
-
-    console.log(staticProps)
-
-
     function clicked() {
         setAccuracy(Math.random());
     }
@@ -100,13 +96,13 @@ export default function Basic(staticProps) {
 
                     <div className="row text-center">
                         <div className="col">
-                            <button onClick={clicked2}>sevenfive</button>
+                            <button onClick={clicked2}>accuracySeven</button>
                         </div>
                     </div>
 
                     <div className="row text-center">
                         <div className="col">
-                            <button onClick={clicked4}>localRand</button>
+                            <button onClick={clicked4}>accuracyRand</button>
                         </div>
                     </div>
 
