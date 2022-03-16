@@ -131,9 +131,7 @@ export default function Basic(staticProps) {
 export async function getStaticProps() {
     return {
         props: {
-            backendHost: process.env.BACKEND_HOST,
             backendAWS: process.env.BACKEND_AWS,
-
         }
     }
 }
