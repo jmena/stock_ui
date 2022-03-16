@@ -2,11 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
 import AccuracyWidget from "components/AccuracyWidget";
 
-export default function Basic() {
+export default function Basic(staticProps) {
 //Model? extract accuracy
 
     const [accuracy, setAccuracy] = useState(1.0);
-
 
 
     // if (typeof window !== "undefined") {
@@ -16,6 +15,8 @@ export default function Basic() {
     // }
 
 
+    console.log(staticProps)
+
 
     function clicked() {
         setAccuracy(Math.random());
@@ -24,11 +25,19 @@ export default function Basic() {
     function clicked2() {
         fetch('/static/accuracy.json')
             .then((received) => received.json())
-            .then((data)=>data["accuracy"] as number)
-            .then((receivedAccuracy)=> setAccuracy(receivedAccuracy))
+            .then((data) => data["accuracy"] as number)
+            .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
     }
+
     function clicked3() {
-        fetch(' https://u17juufpz6.execute-api.us-east-1.amazonaws.com/Prod/hello/')
+        fetch(staticProps.backendAWS + '/hello')
+            .then((received) => received.json())
+            .then((data) => data["accuracy"] as number)
+            .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
+    }
+
+    function clicked4() {
+        fetch(staticProps.backendHost + '/hello')
             .then((received) => received.json())
             .then((data) => data["accuracy"] as number)
             .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
@@ -107,10 +116,26 @@ export default function Basic() {
                         </div>
                     </div>
 
+                    <div className="row text-center">
+                        <div className="col">
+                            <button onClick={clicked4}>localRand</button>
+                        </div>
+                    </div>
+
                 </main>
             </div>
         </>
     );
+}
+
+export async function getStaticProps() {
+    return {
+        props: {
+            backendHost: process.env.BACKEND_HOST,
+            backendAWS: process.env.BACKEND_AWS,
+
+        }
+    }
 }
 
 
