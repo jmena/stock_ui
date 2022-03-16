@@ -36,12 +36,12 @@ export default function Basic(staticProps) {
             .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
     }
 
-    function clicked4() {
-        fetch(staticProps.backendHost + '/hello')
-            .then((received) => received.json())
-            .then((data) => data["accuracy"] as number)
-            .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
-    }
+    // function clicked4() {
+    //     fetch(staticProps.backendHost + '/hello')
+    //         .then((received) => received.json())
+    //         .then((data) => data["accuracy"] as number)
+    //         .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
+    // }
 
     return (
         <>
@@ -118,7 +118,7 @@ export default function Basic(staticProps) {
 
                     <div className="row text-center">
                         <div className="col">
-                            <button onClick={clicked4}>localRand</button>
+                            <button>localRand</button>
                         </div>
                     </div>
 
