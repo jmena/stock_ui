@@ -29,19 +29,13 @@ export default function Basic(staticProps) {
             .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
     }
 
-    function clicked3() {
-        fetch(staticProps.backendAWS + '/hello')
+
+    function clicked4() {
+        fetch(staticProps.backendHost + '/hello')
             .then((received) => received.json())
             .then((data) => data["accuracy"] as number)
             .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
     }
-
-    // function clicked4() {
-    //     fetch(staticProps.backendHost + '/hello')
-    //         .then((received) => received.json())
-    //         .then((data) => data["accuracy"] as number)
-    //         .then((receivedAccuracy) => setAccuracy(receivedAccuracy))
-    // }
 
     return (
         <>
@@ -112,13 +106,7 @@ export default function Basic(staticProps) {
 
                     <div className="row text-center">
                         <div className="col">
-                            <button onClick={clicked3}>awsRand</button>
-                        </div>
-                    </div>
-
-                    <div className="row text-center">
-                        <div className="col">
-                            <button>localRand</button>
+                            <button onClick={clicked4}>localRand</button>
                         </div>
                     </div>
 
@@ -131,7 +119,7 @@ export default function Basic(staticProps) {
 export async function getStaticProps() {
     return {
         props: {
-            backendAWS: process.env.BACKEND_AWS,
+            backendHost: process.env.BACKEND_HOST,
         }
     }
 }
