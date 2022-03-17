@@ -1,24 +1,23 @@
 import Head from 'next/head'
-import Layout from 'components/sec/layout'
+import Layout from 'components/AuthLayout'
 import {getSortedPostsData} from "lib/posts";
 import utilStyles from 'styles/utils.module.css'
-
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import AuthNavMenu from 'components/AuthNavMenu';
+import WarningHeader from 'components/WarningHeader';
+import CardPortfolio from 'components/CardPortfolio';
 
 export default function Home() {
     return (
-        <Layout home>
-            <section className={utilStyles.headingMd}>
-                <p>[Your Self Introduction]</p>
-            </section>
+        <>
+            <Layout>
+                <AuthNavMenu />
+                
+                <WarningHeader />
 
-            {/* Add this <section> tag below the existing <section> tag */}
-            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                <h2 className={utilStyles.headingLg}>Blog</h2>
-                <ul className={utilStyles.list}>
-
-                </ul>
-            </section>
-        </Layout>
+                <CardPortfolio />
+            </Layout>
+        </>
     )
 }
 

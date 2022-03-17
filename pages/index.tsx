@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, {siteTitle} from 'components/layout'
+import Layout from 'components/AuthLayout'
 import {getSortedPostsData} from "lib/posts";
 import utilStyles from 'styles/utils.module.css'
 import Link from 'next/link'
@@ -7,10 +7,10 @@ import Date from 'components/date'
 
 export default function Home({allPostsData}) {
     return (
-        <Layout home>
+        <Layout >
             {/* Keep the existing code here */}
             <Head>
-                <title>{siteTitle}</title>
+                <title>xxxxx</title>
             </Head>
             <section className={utilStyles.headingMd}>
                 <p>[Your Self Introduction]</p>
